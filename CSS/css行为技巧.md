@@ -49,3 +49,9 @@ body {
 #### :smiling_imp:使用pointer-events禁用事件触发
 通过`pointer-events:none`禁用事件触发(默认事件、冒泡事件、鼠标事件、键盘事件等)，相当于`<button>`的`disabled`
 
+
+
+#### :black_heart:使用animation-delay保留动画起始帧
+
+通过`transform-delay`或`animation-delay`设置**负值**时延保留动画起始帧，让动画进入页面不用等待即可运行
+

@@ -61,3 +61,19 @@
 + 滚动滚动条，由于子元素设置了不同的 `transform: translateZ()`，那么他们滚动的上下距离 `translateY` 相对屏幕（我们的眼睛），也是不一样的，这就达到了滚动视差的效果
 
 代码：[在线演示](https://codepen.io/sukysukysuky/pen/KKPBbbZ)
+
+
+
+#### :see_no_evil:毛玻璃效果
+
+![image](../images/maoboli.png)
+
+关键点：
+
++ `clip-path`剪切我们需要处理部分区域
++ `fliter`使用我们滤镜来进行图像处理,我们使用到的是一个叫做`drop-shadow`的属性，他能够让内部的**所有元素都拥有阴影**。
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/aboaweV)
+
+
+

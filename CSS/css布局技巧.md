@@ -4,6 +4,8 @@
 
 #### :wink:使用vw定制rem自适应布局
 
+---
+
 ```css
 /* 基于UI width=750px DPR=2的页面 */
 html {
@@ -14,6 +16,9 @@ html {
 vw暂时来说大部分的浏览器还不支持，在日常开发中，可以说是**废的**。
 
 #### :no_mouth:使用:nth-child()来选择元素
+
+---
+
 ###### 选择奇数
 
 ```css
@@ -55,6 +60,8 @@ li:nth-child(n+4):nth-child(-n+8)
 
 #### :unamused:使用writing-mode排版竖文
 
+---
+
 
 ```
 //垂直排布，从右往左
@@ -63,6 +70,9 @@ writing-mode: vertical-rl;
 ![image](../images/example1.png)
 
 #### :heart_eyes:使用:not()去除无用属性
+
+---
+
 通过`:not()`排除指定元素不使用设置样式
 ###### 使用:not()去除列表最后一个元素的右边框
 
@@ -71,22 +81,34 @@ li:not(:last-child)
 ```
 
 #### :sweat:使用object-fit规定图像尺寸
+
+---
+
 通过`object-fit`使图像脱离`background-size`的约束，使用`<img>`来标记图像背景尺寸
 ![image](../images/2.png)
 
 除了IE以外都支持，可行
 
 #### :hushed:使用overflow-x排版横向列表
+
+---
+
 通过`flexbox`或`inline-block`的形式横向排列元素，对父元素设置`overflow-x:auto`横向滚动查看
 
 
 
 #### :sob:使用text-overflow控制文本溢出
+
+---
+
 通过`text-overflow:ellipsis`对溢出的文本在末端添加`...`
 
 
 
 #### :yum:使用transform描绘1px边框
+
+---
+
 分辨率比较低的屏幕下显示1px的边框会显得模糊，通过`::before`或`::after`和`transform`模拟细腻的1px边框
 
 
@@ -112,6 +134,9 @@ li:not(:last-child)
 ![image](../images/5.png)
 
 #### :two_hearts:使用letter-spacing排版倒序文本
+
+---
+
 通过`letter-spacing`设置**负值**字体间距将文本倒序
 
 **letter-spacing最少是font-size的2倍**
@@ -119,6 +144,9 @@ li:not(:last-child)
 ![image](../images/4.png)
 
 #### :star2:使用margin-left排版左重右轻列表
+
+---
+
 使用`flexbox`横向布局时，最后一个元素通过`margin-left:auto`实现向右对齐
 
 ![image](../images/3.png)
@@ -126,6 +154,9 @@ li:not(:last-child)
 
 
 #### :pensive:块级格式化上下文（BFC）
+
+---
+
 如何触发？
 + body根元素
 + 浮动元素中float的值不是none
@@ -136,6 +167,9 @@ li:not(:last-child)
 
 
 #### :smiley:css优先级
+
+---
+
 + 每个选择器都有权值，权值越大越优先
 
 + 继承的样式优先级低于自身指定样式
@@ -148,6 +182,8 @@ li:not(:last-child)
 
 #### :broken_heart:自定义滚动条
 
+---
+
 自定义滚动条时我们能够修改的属性又以下的几种：
 
 `::-webkit-scrollbar` 滚动条整体部分，可以设置宽度啥的
@@ -159,4 +195,35 @@ li:not(:last-child)
 `::-webkit-resizer` 定义右下角拖动块的样式
 
 代码：[在线演示](https://codepen.io/sukysukysuky/pen/pozZOXV)
+
+
+
+#### :point_right:自定义文本选择颜色
+
+---
+
+```css
+::selection{
+    background-color:#6736ad;
+}
+```
+
+![image](../images/selection.png)
+
+#### :no_good:使用linear-gradient文本渲染
+
+---
+
+`filter`内包含的有用的函数有：
+
+![image](../images/filter.png)
+
+代码:[在线演示](https://codepen.io/sukysukysuky/pen/KKPxZeq)
+
+关键点：
+
++ 通过动画配合`filter`来对文字进行一个渲染。
++ 使用`background-clip`来剪切背景
+
+代码:[在线演示](https://codepen.io/sukysukysuky/pen/zYOJRve)
 

@@ -5,23 +5,20 @@
 + [Vue的基本技巧](#3)
 + [VUE的基本结构](#5)
 + [VUE数据传递](#4)
-+ [开发过程技巧](#5)
 
++ [VUE事件](#5)
 
++ [开发过程技巧](#6)
 
-+ [VUE的双向绑定](#9)
-+ [给一些文件路径设置别名](#10)
-+ [VUE递归组件](#11)
-+ [VUE之插槽](#12)
-+ [vue项目支持手机端访问](#13)
-+ [vue的异步加载](#14)
-+ [添加Props属性](#15)
++ [VUE的高级功能](#7)
 
 
 
 
 
 ### :weary:<span id="1">安装</span>
+
+---
 
 ##### 全局安装vue包
 ```javascript
@@ -45,6 +42,10 @@ Vue.js 2.0，为了支持**服务端渲染**（server-side rendering），编译
 **注意：VUE子文件的命名应该使用头一个字母为大写**
 
 ### :sparkles:<span id="2">Vue的生命周期</span>
+
+---
+
+
 
 ![lifecycle](E:\notebook\images\lifecycle.png)
 
@@ -77,32 +78,16 @@ Vue.js 2.0，为了支持**服务端渲染**（server-side rendering），编译
 
 ### :wink:<span id="3">VUE基本技巧</span>
 
+---
+
+
+
 ###### 获取vue的节点
 
 ```javascript
 <div class="list" ref="wrapper"></div>
   
 this.dom = this.$refs.wrapper
-```
-
-
-
-###### 绑定事件
-
-```javascript
-<li class="item"
-v-on:click="handleClick"
-></li>
-
-export default {
-	...
-  methods:{
-      //定义方法
-    handleClick(e){
-      // do sth
-    }
-  }
-}
 ```
 
 
@@ -139,7 +124,199 @@ export default {
 
 
 
-###### 	VUE的异步加载
+###### computed属性
+
+VUE里面计算属性的用途主要是用来我们处理开发过程中的复杂逻辑的。
+
+```vue
+export default {
+	computed: {
+		message :function(){
+			//计算
+			return newMessage
+		}
+	}
+}
+```
+
+
+
+###### watch属性
+
+这是VUE的侦听属性，感觉其实是很像上面我们说的计算属性，但有时我们还是需要一个侦听属性的，它可以用来进行数据变化进行异步操作。
+
+```vue
+export default {
+	watch: {
+		message :function(){
+			// do sth
+		}
+	}
+}
+```
+
+
+
+###### VUE的插槽
+
+日常开发，将需要插槽的地方预留，如这里我们设置名字`MySlot.vue`
+
+```vue
+<template lang="html">
+  <div>
+    <slot></slot>
+  </div>
+</template>
+```
+
+现在要将内容填充在插槽中，只要像组件一样调用`MySlot.vue`组件，并将我们要插入的内容包裹在里面即可。
+
+```vue
+<my-slot>
+ <div>ddd</div>
+</my-slot>
+```
+
+
+
+
+
+### :anguished:<span id="4">VUE数据传递</span>
+
+###### 将数据传递给子组件
+
+```vue
+//父组件
+<template>
+    <div>
+      <home-swiper :swiperList="swiperList"></home-swiper>
+    </div>
+</template>
+
+//子组件
+export default {
+  name:'HomeRecommand',
+  //传递的值进行检验
+  props:{
+    swiperList:Array
+  }
+}
+
+//子组件使用
+<li v-for="item in swiperList" :key="item.id" class="recommand-item">
+   //do sth
+</li>
+```
+
+
+
+###### 双向绑定
+
+```vue
+<input class="search-input" v-model="keyword" placeholder="输入你想要搜索的城市"/>
+```
+
+
+
+#### :wink:<span id="5">​VUE事件</span>
+
+###### 绑定事件
+
+```javascript
+<li class="item"
+v-on:click="handleClick"
+></li>
+
+export default {
+	...
+  methods:{
+      //定义方法
+    handleClick(e){
+      // do sth
+    }
+  }
+}
+```
+
+
+
+###### VUE子组件发送自定义事件
+
+```vue
+//某组件发送
+this.$emit('change','abc')
+
+//组件接收
+<div @change="handleChange">xxx</div>
+methods:{
+    handleChange(){
+        //do sth
+    }
+}
+```
+
+
+
+#### :fire:<span id="6">开发过程技巧</span>
+
+---
+
+###### 给一些文件路径设置别名
+
+打开`build/webpack.base.conf.js`
+设置其中的`alias`,加入别名及其路径
+
+```javascript
+output: {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
+      'styles':resolve('src/assets/styles')
+    }
+  },
+```
+
+
+
+###### vue项目支持手机端访问
+
+在`package.json`中插入
+
+```javascript
+"scripts": {
+    "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "lint": "eslint --ext .js,.vue src",
+    "build": "node build/build.js"
+  },
+```
+`//--host 0.0.0.0`是支持我们能够手机内网访问的关键
+
++ 用cmd 使用`ipconfig`查找本机ip地址
++ 手机将localhost换成本机ip地址即可访问
+
+
+
+###### vue支持某些低配手机的promise等高级函数
+
+```javascript
+    npm install babel-polyfill
+    
+    //在main.js中插入
+    import 'babel-polyfill'
+```
+
+
+
+###### VUE的异步加载
 
 ```javascript
 import Vue from 'vue'
@@ -160,9 +337,33 @@ export default new Router({
 
 
 
-### :anguished:<span id="4">VUE数据传递</span>
+#### :girl:<span id="7">VUE的高级功能</span>
 
+---
 
+###### VUE的递归组件
 
-#### ###  <span id="5">开发过程技巧</span>
+文件名为`DetailList.vue`
+
+```vue
+<template lang="html">
+  <div class="list">
+    <div class="list-item" v-for="(item,index) in list" :key="index">
+      <div>{{item.title}}</div>
+      <div v-if="item.children" class="list-children">
+        <detail-list :list="item.children"></detail-list>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name:'DetailList',
+  props:{
+    list:Array
+  }
+}
+</script>
+```
 

@@ -77,3 +77,71 @@
 
 
 
+#### :car:车车车-能够自己变换颜色的东西
+
+![image](../images/car.png)
+
+关键点：
+
++ `mix-blend-mode`能够将元素的内容及背景和其父元素的内容及背景混合起来
++ `input`里面的`type:color`能够让我们的`input`标签拥有拾色器的功能
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/BaBqoar)
+
+
+
+#### :circus_tent:使用计数器进行计算
+
+![image](../images/counter.gif)
+
+关键点：
+
++ css计数器有两个属性和一个方法，它们分别是：
+
+  + `counter-reset`给计数器起个名字，告诉我们计数器从那个数字开始计数,值得注意的是我们能够进行多个计数器同时命名
+
+    ```css
+    .xxx { counter-reset: wangxiaoer 2 wangxiaosan 3; }
+    ```
+
+    
+
+  + `counter-increment`表示我们每次计数的变化值。其主要规则能够称为**普照规则**，具体说来就是普照源唯一，每普照一次，普照源增加1次计数值。
+
+  + `counter()`这是个方法，就是用来显示计数的
+
++ `display:none`时计数器无法正常显示
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/vYBVLxb)
+
+
+
+#### :bookmark_tabs:构造一张商城票券
+
+![image](../images/ticket.png)
+
+关键点：
+
++ `linear-gradient`这个是css中划时代的一个值，我们来大致说下各个值
+
+```css
+background-image:linear-gradient(<渐变线的起始点位置>，<颜色> <颜色终止点>)
+```
+
+值得注意的一点是我们能够无限添加其后面的颜色及其终止的位置。当两个颜色终止点重叠的时候，我们会发现颜色将不会有过渡，而会直接进行一个变换。
+
++ `radial-gradient`也是个神奇的值，我们也来说下各个值
+
+```css
+background-image:radial-gradient(<半径大小> <渐变形状> <圆点>，<颜色> <颜色终止点>)
+```
+
+和`linear-gradient`类似，他也能无限添加颜色及其终止位置。
+
++ 最后我们再来讲下`background`这个值拥有的属性
+
+```css
+background:<图片路径> <background-position-x> <background-position-y> / <background-size> <background-repeat>;
+```
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/WNeaoBy)

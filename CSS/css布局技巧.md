@@ -1,3 +1,5 @@
+
+
 ## 布局技巧
 
 布局技巧是什么呢？我喜欢把当作我们在进行页面开发时，为了达到与设计图类似的效果，所用到的一些很多人在开发中不会使用的“捷径”。
@@ -220,10 +222,39 @@ li:not(:last-child)
 
 代码:[在线演示](https://codepen.io/sukysukysuky/pen/KKPxZeq)
 
+![image](E:\notebook\images\text-render.gif.gif)
+
 关键点：
 
 + 通过动画配合`filter`来对文字进行一个渲染。
 + 使用`background-clip`来剪切背景
 
 代码:[在线演示](https://codepen.io/sukysukysuky/pen/zYOJRve)
+
+
+
+#### :artificial_satellite:使用linear-gradient描绘波浪线
+
+---
+
+使用`linear-gradient`首先描绘出一根向左的线段及向右的线段，之后通过控制我们的`background-size`来让这两段线段不断重复。
+
+```css
+background: linear-gradient(135deg, transparent, transparent 45%, #f66, transparent 55%, transparent 100%), linear-gradient(45deg, transparent, transparent 45%, #f66, transparent 55%, transparent 100%);
+background-size: 20px 20px;
+```
+
+
+
+#### :black_joker:使用conic-gradient描绘饼图
+
+---
+
+`conic-gradient`主要是进行圆锥渐变，因此我们通过它完全能够实现一些简单的饼状图。
+
+```css
+background-image: conic-gradient($red 0 25%, $purple 25% 30%, $orange 30% 55%, $blue 55% 70%, $green 70% 100%);
+```
+
+![image](../images/pie.png)
 

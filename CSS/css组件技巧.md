@@ -145,3 +145,15 @@ background:<图片路径> <background-position-x> <background-position-y> / <bac
 ```
 
 代码：[在线演示](https://codepen.io/sukysukysuky/pen/WNeaoBy)
+
+
+
+#### :clinking_glasses:可切换内容的标签页
+
+![image](../images/tab.gif)
+
+关键点：
+
++ `input`和`label`之间拥有一种锚点的关系，当我们的东西没有显示在我们的区域内的时候，他会进行定位然后让其出现在我们区域之中。与此相似的还有`label`和`href`
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/RwbqJvr)

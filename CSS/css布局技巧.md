@@ -258,3 +258,15 @@ background-image: conic-gradient($red 0 25%, $purple 25% 30%, $orange 30% 55%, $
 
 ![image](../images/pie.png)
 
+
+
+#### :oil_drum:display:inline-block 元素之间出现了奇怪的间隙
+
+---
+
+给父元素设置
+
+```
+font-size:0;
+```
+

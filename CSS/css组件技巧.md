@@ -157,3 +157,30 @@ background:<图片路径> <background-position-x> <background-position-y> / <bac
 + `input`和`label`之间拥有一种锚点的关系，当我们的东西没有显示在我们的区域内的时候，他会进行定位然后让其出现在我们区域之中。与此相似的还有`label`和`href`
 
 代码：[在线演示](https://codepen.io/sukysukysuky/pen/RwbqJvr)
+
+
+
+#### :runner:星级评分
+
+![image](../images/rate.gif)
+
+关键点：
+
++ 如果我们需要在`hover`状态的时候能够选择自身，我们能够写下`input:hover:after{}`这个语句进行选择
++ 星级评分的本质还是一个单选框的排布
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/RwbEqLG)
+
+
+
+#### :jack_o_lantern:移动的底部导航
+
+![image](../images/tab-move.gif)
+
+关键点：
+
++ `$(this).prevAll().length`定位最后一个 `div` 之前的所有 `div`共有几个
++ 使用`transition`来进行动画效果展示
+
+代码：[在线演示](https://codepen.io/sukysukysuky/pen/GRKzxbE)
+
